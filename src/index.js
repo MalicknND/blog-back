@@ -2,10 +2,9 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 require('dotenv').config();
+const authRoute = require('./routes/auth');
 
-app.use('/', (req, res) => {
-  res.send('Hello World');
-});
+app.use(express.json());
 
 mongoose
   .connect(
@@ -15,6 +14,8 @@ mongoose
     console.log('successfully connect to database');
   })
   .catch((err) => console.log(err));
+
+app.use('/api/auth', authRoute);
 
 //Méthod launch app
 app.listen(process.env.PORT, function () {
