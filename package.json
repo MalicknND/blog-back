@@ -4,7 +4,7 @@
   "description": "blog",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js"
+    "dev": "nodemon ./src/index.js"
   },
   "author": "Malick",
   "license": "ISC",
