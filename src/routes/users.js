@@ -53,6 +53,7 @@ router.delete('/:id', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
+    //ce code permet de ne pas afficher le mot de passe
     const { password, ...others } = user._doc;
     res.status(200).json(others);
   } catch (error) {
