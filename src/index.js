@@ -20,18 +20,22 @@ mongoose
   .catch((err) => console.log(err));
 
 const storage = multer.diskStorage({
+  //la destination de l'image
   destination: (req, file, cb) => {
     cb(null, 'images');
   },
+  //file
   filename: (req, file, cb) => {
     cb(null, 'image.jpeg');
   },
 });
+//upload file
 const upload = multer({ storage: storage });
 app.post('/api/upload', upload.single('file'), (req, res) => {
   res.status(200).json('File has been uploaded');
 });
 
+//Méthod use route
 app.use('/api/auth', authRoute);
 app.use('/api/users', userRoute);
 app.use('/api/posts', postRoute);
