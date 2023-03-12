@@ -7,6 +7,7 @@ const userRoute = require('./routes/users');
 const postRoute = require('./routes/posts');
 const categoryRoute = require('./routes/categories');
 const multer = require('multer');
+const cors = require('cors');
 
 app.use(express.json());
 
@@ -36,6 +37,7 @@ app.post('/api/upload', upload.single('file'), (req, res) => {
 });
 
 //Méthod use route
+app.use(cors());
 app.use('/api/auth', authRoute);
 app.use('/api/users', userRoute);
 app.use('/api/posts', postRoute);
